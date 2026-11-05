@@ -1,23 +1,41 @@
-# Billed App
+# Billed — débogage et tests d'une application de notes de frais
+
+> Reprise d'une application SaaS de notes de frais : correction des bugs du parcours employé, écriture des tests unitaires et d'intégration avec Jest, et rédaction d'un plan de tests End-to-End.
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Jest](https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=white)
+![Testing Library](https://img.shields.io/badge/Testing_Library-E33332?logo=testinglibrary&logoColor=white)
 
 ## Sujet
 
-Vous êtes développeur front-end chez Billed, une entreprise qui produit des solutions SaaS pour les équipes de ressources humaines. 
+Projet de formation OpenClassrooms. Billed édite des solutions SaaS pour les équipes RH. Suite au départ d'un développeur, la fonctionnalité « notes de frais » doit être fiabilisée en deux semaines : le back-end existe, mais le front-end contient des bugs et presque aucun test.
 
-Vous avez été sollicité en urgence pour la correction et la mise en place de tests sur la fonctionnalité "note de frais" de l'application, suite au départ précipité d'un membre de l'équipe. 
+L'application propose deux parcours :
+- **Employé** : se connecter, consulter ses notes de frais, en créer une avec un justificatif
+- **Administrateur RH** : valider ou refuser les notes de frais
 
-L'objectif est de présenter une solution fonctionnelle à l'ensemble de l'entreprise dans les deux semaines à venir.
+## Bugs corrigés
+
+- Les notes de frais n'étaient pas triées : elles s'affichent désormais de la plus récente à la plus ancienne
+- Connexion administrateur impossible : le formulaire lisait les champs du formulaire employé
+- Le formulaire acceptait n'importe quel fichier comme justificatif : seuls les formats `.jpg`, `.jpeg` et `.png` sont acceptés
 
 ## Compétences acquises
 
-Billed est une entreprise spécialisée dans les solutions SaaS destinées aux équipes de ressources humaines.
+- **Débogage** d'une application existante avec Chrome DevTools (points d'arrêt, inspection)
+- **Tests unitaires** avec Jest et Testing Library (DOM, événements utilisateur)
+- **Tests d'intégration** des appels API (GET et POST) avec un store mocké, y compris les erreurs 404 et 500
+- **Couverture de code** suivie avec le rapport Jest (`--coverage`)
+- **Plan de tests End-to-End** du parcours employé : [Bartz_Cyril_4_plan_test_052023.pdf](Bartz_Cyril_4_plan_test_052023.pdf)
+- Lecture et compréhension d'un code écrit par d'autres
 
-Le projet comprenait deux parcours utilisateurs distincts : celui de l'administrateur RH et celui de l'employé. Le backend des deux parcours était déjà développé en version alpha, mais il restait des tâches à accomplir du côté du frontend.
+## Lancer le projet en local
 
-J'ai été chargé de fiabiliser et d'améliorer le parcours de l'employé. Pour cela, j'ai dû lire attentivement le document fourni par Matthieu, qui décrivait en détail les besoins pratiques et comprenait des rapports sur les bugs identifiés, ainsi qu'un exemple de plan de tests End-to-End.
+```bash
+npm install
+npm test          # tests Jest + rapport de couverture
+```
 
-Garance, le membre précédent de l'équipe, avait utilisé l'outil Chrome Debugger pour tester le parcours de l'administrateur RH, et j'ai continué à utiliser cet outil pour déboguer ce parcours. En ce qui concerne le parcours de l'employé, j'ai effectué des tests complets et résolu les problèmes identifiés.
+Pour utiliser l'interface, démarrer d'abord l'API fournie par OpenClassrooms ([Billed-app-FR-Back](https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back), port 5678), puis servir ce dossier, par exemple avec `npx live-server`.
 
-En parallèle de la correction des bugs, j'ai également été chargé de mettre en place les tests manquants pour assurer la fiabilité de l'application. Pour cela, j'ai utilisé Jest.js, un framework de tests JavaScript populaire.
-
-Ce projet m'a permis de développer mes compétences en débogage, en tests et en correction d'applications front-end. J'ai travaillé en étroite collaboration avec l'équipe "note de frais" pour assurer la stabilité et la qualité de l'application avant la présentation à l'ensemble de l'entreprise.
+Comptes de test : `employee@test.tld` / `employee` et `admin@test.tld` / `admin`.
